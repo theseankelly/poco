@@ -26,6 +26,47 @@ POCO_SOURCES_AUTO_PLAT( SRCS WIN32
 	)
 endif()
 
+if(WINDOWS_STORE)
+	message(STATUS "!!! Windows Store!")
+
+	# UWP only supports a limited subset of functions.
+	POCO_SOURCES_AUTO_PLAT ( SRCS OFF
+		src/ArchiveStrategy.cpp
+		src/AsyncChannel.cpp
+		src/DirectoryIterator.cpp
+		src/DirectoryIteratorStrategy.cpp
+		src/DirectoryWatcher.cpp
+		src/Environment.cpp
+		src/EventChannel.cpp
+		src/EventLogChannel.cpp
+		src/File.cpp
+		src/FileChannel.cpp
+		src/FileStream.cpp
+		src/FileStreamFactory.cpp
+		src/FormattingChannel.cpp
+		src/Glob.cpp
+		src/LogFile.cpp
+		src/Logger.cpp
+		src/LogStream.cpp
+		src/LoggingFactory.cpp
+		src/Message.cpp
+		src/PatternFormatter.cpp
+		src/Process.cpp
+		src/PurgeStrategy.cpp
+		src/Random.cpp
+		src/RandomStream.cpp
+		src/RotateStrategy.cpp
+		src/SharedMemory.cpp
+		src/SimpleFileChannel.cpp
+		src/SortedDirectoryIterator.cpp
+		src/TemporaryFile.cpp
+		src/WindowsConsoleChannel.cpp
+		src/URIStreamOpener.cpp
+		src/UUIDGenerator.cpp
+	)
+endif()
+
+
 # Version Resource
 if(MSVC AND NOT POCO_STATIC)
     source_group("Resources" FILES ${CMAKE_SOURCE_DIR}/DLLVersion.rc)

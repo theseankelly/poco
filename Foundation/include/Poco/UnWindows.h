@@ -36,7 +36,6 @@
 #ifndef Foundation_UnWindows_INCLUDED
 #define Foundation_UnWindows_INCLUDED
 
-
 // Reduce bloat
 #if defined(_WIN32)
 	#if !defined(WIN32_LEAN_AND_MEAN) && !defined(POCO_BLOATED_WIN32)
@@ -45,14 +44,14 @@
 #endif
 
 
-// Microsoft Visual C++ includes copies of the Windows header files 
+// Microsoft Visual C++ includes copies of the Windows header files
 // that were current at the time Visual C++ was released.
-// The Windows header files use macros to indicate which versions 
-// of Windows support many programming elements. Therefore, you must 
-// define these macros to use new functionality introduced in each 
-// major operating system release. (Individual header files may use 
-// different macros; therefore, if compilation problems occur, check 
-// the header file that contains the definition for conditional 
+// The Windows header files use macros to indicate which versions
+// of Windows support many programming elements. Therefore, you must
+// define these macros to use new functionality introduced in each
+// major operating system release. (Individual header files may use
+// different macros; therefore, if compilation problems occur, check
+// the header file that contains the definition for conditional
 // definitions.) For more information, see SdkDdkVer.h.
 
 
@@ -73,8 +72,8 @@
 	// best to determine the appropriate values
 	// and may redefine these. See Platform_WIN32.h
 	// for details.
-	#define _WIN32_WINNT 0x0502
-	#define NTDDI_VERSION 0x05020000
+	#define _WIN32_WINNT 0x0603
+	#define NTDDI_VERSION 0x06030000
 #endif
 #endif
 
@@ -86,7 +85,6 @@
 
 
 #include <windows.h>
-
 
 #if !defined(POCO_NO_UNWINDOWS)
 // A list of annoying macros to #undef.

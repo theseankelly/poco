@@ -42,6 +42,7 @@
 #define POCO_OS_UNKNOWN_UNIX  0x00ff
 #define POCO_OS_WINDOWS_NT    0x1001
 #define POCO_OS_WINDOWS_CE    0x1011
+#define POCO_OS_WINDOWS_UWP   0x1021
 #define POCO_OS_VMS           0x2001
 
 
@@ -103,7 +104,11 @@
 	#define POCO_OS POCO_OS_WINDOWS_CE
 #elif defined(_WIN32) || defined(_WIN64)
 	#define POCO_OS_FAMILY_WINDOWS 1
-	#define POCO_OS POCO_OS_WINDOWS_NT
+	#if defined(WINAPI_FAMILY) && (WINAPI_FAMILY == WINAPI_FAMILY_APP)
+		#define POCO_OS POCO_OS_WINDOWS_UWP
+	#else
+		#define POCO_OS POCO_OS_WINDOWS_NT
+	#endif
 #elif defined(__VMS)
 	#define POCO_OS_FAMILY_VMS 1
 	#define POCO_OS POCO_OS_VMS

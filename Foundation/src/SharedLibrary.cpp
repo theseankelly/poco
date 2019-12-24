@@ -23,7 +23,11 @@
 #elif defined(POCO_OS_FAMILY_UNIX)
 #include "SharedLibrary_UNIX.cpp"
 #elif defined(POCO_OS_FAMILY_WINDOWS) && defined(POCO_WIN32_UTF8)
+#if POCO_OS == POCO_OS_WINDOWS_UWP
+#include "SharedLibrary_UWP.cpp"
+#else
 #include "SharedLibrary_WIN32U.cpp"
+#endif
 #elif defined(POCO_OS_FAMILY_WINDOWS)
 #include "SharedLibrary_WIN32.cpp"
 #endif

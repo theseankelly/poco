@@ -13,7 +13,11 @@
 
 
 #include "Poco/Path.h"
+
+#if 0
 #include "Poco/File.h"
+#endif
+
 #include "Poco/Exception.h"
 #include "Poco/StringTokenizer.h"
 #if defined(_WIN32) && defined(POCO_WIN32_UTF8)
@@ -26,7 +30,9 @@
 #if defined(POCO_OS_FAMILY_UNIX)
 #include "Path_UNIX.cpp"
 #elif defined(POCO_OS_FAMILY_WINDOWS) && defined(POCO_WIN32_UTF8)
-#if defined(_WIN32_WCE)
+#if POCO_OS == POCO_OS_WINDOWS_UWP
+#include "Path_UWP.cpp"
+#elif defined(_WIN32_WCE)
 #include "Path_WINCE.cpp"
 #else
 #include "Path_WIN32U.cpp"
@@ -578,7 +584,7 @@ std::string Path::configHome()
 #endif
 }
 
-	
+
 std::string Path::dataHome()
 {
 #if defined(POCO_OS_FAMILY_UNIX) || defined(POCO_OS_FAMILY_WINDOWS)
@@ -588,7 +594,7 @@ std::string Path::dataHome()
 #endif
 }
 
-	
+
 std::string Path::tempHome()
 {
 #if defined(POCO_OS_FAMILY_UNIX) || defined(POCO_OS_FAMILY_WINDOWS)
@@ -598,7 +604,7 @@ std::string Path::tempHome()
 #endif
 }
 
-	
+
 std::string Path::cacheHome()
 {
 #if defined(POCO_OS_FAMILY_UNIX) || defined(POCO_OS_FAMILY_WINDOWS)
@@ -645,6 +651,7 @@ void Path::listRoots(std::vector<std::string>& roots)
 
 bool Path::find(StringVec::const_iterator it, StringVec::const_iterator end, const std::string& name, Path& path)
 {
+#if 0
 	while (it != end)
 	{
 #if defined(WIN32)
@@ -667,6 +674,7 @@ bool Path::find(StringVec::const_iterator it, StringVec::const_iterator end, con
 		}
 		++it;
 	}
+#endif
 	return false;
 }
 
